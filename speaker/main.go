@@ -22,7 +22,6 @@ import (
 	"os/signal"
 	"syscall"
 
-	"go.universe.tf/metallb/internal/bgp"
 	"go.universe.tf/metallb/internal/config"
 	"go.universe.tf/metallb/internal/k8s"
 	"go.universe.tf/metallb/internal/layer2"
@@ -169,7 +168,7 @@ func newController(cfg controllerConfig) (*controller, error) {
 		config.BGP: &bgpController{
 			logger: cfg.Logger,
 			myNode: cfg.MyNode,
-			svcAds: make(map[string][]*bgp.Advertisement),
+			svcAds: make(map[string][]*advertisementData),
 		},
 	}
 
